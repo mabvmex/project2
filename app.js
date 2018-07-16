@@ -8,11 +8,12 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const session      = require('express-session');
 
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/project2', {useMongoClient: true})
+  .connect(process.env.DB, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -44,14 +45,25 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
+//session
+app.use(session({
+  secret: "project2",
+  resave: true,
+  saveUninitialized: true
+}));
+
+//passport
+const passport = require('./helpers/passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 const index = require('./routes/index');
+const auth = require('./routes/auth');
+app.use('/', auth);
 app.use('/', index);
 
 
