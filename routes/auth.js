@@ -38,6 +38,8 @@ router.post('/signup', (req, res, next) => {
     req.body.err = 'Tu password no coincide';
     res.render('auth/signup', req.body);
   }
+
+
   User.register(req.body, req.body.password)
   .then(user=>{
     sendActivationLink(user);
@@ -49,6 +51,8 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
+
+
 //loginFacebook
 router.get('/facebook', passportFacebook.authenticate('facebook'));
 
@@ -59,7 +63,6 @@ router.get('/facebook/callback',
     res.redirect('/profile');
   });
 
-
 router.get('/login', isAuth, (req, res, next) => {
   res.render('auth/login');
 });
@@ -67,6 +70,8 @@ router.get('/login', isAuth, (req, res, next) => {
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   res.redirect('/profile');
 });
+
+
 
 router.post('/logout',  (req, res, next) => {
   req.logout();

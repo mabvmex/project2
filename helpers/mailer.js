@@ -1,7 +1,5 @@
 const nodemailer = require('nodemailer');
 
-
-
 const transporter = nodemailer.createTransport(
   {
     service: 'Gmail',
@@ -9,10 +7,7 @@ const transporter = nodemailer.createTransport(
       user: process.env.USERMAIL,
       pass: process.env.USERMAILPASSWORD
     }
-
-}
-
-)
+})
 
 exports.sendActivationLink = (user) => {
   const options = {
@@ -23,8 +18,3 @@ exports.sendActivationLink = (user) => {
   };
   transporter.sendMail(options);
 }
-
-
-
-
-
