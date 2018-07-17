@@ -1,0 +1,15 @@
+<div class="ui link cards">
+  {{#each photos}}
+    <div class="card">
+      <div class="image">
+        <img src="{{url}}">
+      </div>
+      <div class="content">
+        <div class="header">{{title}}</div>
+      </div>
+      <a class="ui red small basic button" type='submit'>Delete</a>
+  </div>
+    {{/each}}
+  </div>
+
+  <a href="/gallery/new-photo"><button class="ui pink big basic button" type='submit'>Add new photo</button></a> 
