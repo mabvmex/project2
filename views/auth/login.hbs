@@ -1,12 +1,15 @@
-<h1>Login</h1>
-
-<form validated action="/login" method="post">
-        <p>
-        <input required placeholder="Tu correo de usuario" name="email" type="email">
-    </p>
-        <p>
-        <input required placeholder="Tu password de usuario" name="password" type="password">
-    </p>
-    <input name="next" value="{{next}}" type="hidden">
-    <input type="submit">
-</form>
+<div class='ui main text container segment'>
+	<div class='ui huge header'>Come in!</div>
+  	<form validated class='ui form' action='/login' method='POST'>
+			<div class='field'>
+				<label for='email'>Email</label>
+				<input required placeholder="Email" name="email" type="email">
+			</div>
+			<div class='field'>
+				<label for='password'>Password</label>
+				<input required placeholder="Password" name="password" type="password">
+			</div>
+				<input name="next" value="{{next}}" type="hidden">
+				<button class="ui pink big basic button" type='submit'>Let me in!</button>
+ 		</form>
+</div>

@@ -33,7 +33,7 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  if(req.body.password !== req.body.password2) {
+  if(req.body.password !== req.body.repeatpassword) {
     req.body.err = 'Tu password no coincide';
     res.render('auth/signup', req.body);
   }
