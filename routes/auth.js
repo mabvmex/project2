@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const passport = require('passport');
 const sendActivationLink = require('../helpers/mailer').sendActivationLink;
+const passportFacebook = require('../helpers/facebook');
 
 const errDict = {
   UserExistsError: 'Este usuario ya existe'
@@ -47,6 +48,17 @@ router.post('/signup', (req, res, next) => {
     res.render('auth/signup', req.body);
   });
 });
+
+//loginFacebook
+router.get('/facebook', passportFacebook.authenticate('facebook'));
+
+router.get('/facebook/callback',
+  passportFacebook.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/profile');
+  });
+
 
 router.get('/login', isAuth, (req, res, next) => {
   res.render('auth/login');
