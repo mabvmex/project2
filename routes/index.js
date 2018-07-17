@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+<<<<<<< HEAD
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
   Photo.find({}, (err, photos) => {
@@ -38,5 +39,7 @@ router.post('/gallery/new-photo', (req, res, next) => {
 router.get('/music', (req, res, next) => {
   res.render('music');
 })
+=======
+>>>>>>> 7a2cd08220a33c6a5712141a0a269f726d4526ad
 
 module.exports = router;

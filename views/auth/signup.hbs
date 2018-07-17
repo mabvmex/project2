@@ -1,27 +1,37 @@
 <div class='ui main text container segment'>
 	<div class='ui huge header'>Join us!</div>
-  	<form validated class='ui form' action='/signup' method='POST'>
+		<form validated class='ui form' action='/signup' method='POST'>
 			<div class='field'>
 				<label for='username'>Name</label>
-        <input required value="{{username}}" placeholder="Name" name="username" type="text">
-      </div>
+				<input required value="{{username}}" placeholder="Name" name="username" type="text">
+			</div>
+		
 			<div class='field'>
 				<label for='email'>Email</label>
 				<input required value="{{email}}" placeholder="Email" name="email" type="email">
+		``	</div>
+		<div class='field'>
+			<label for='password'>Password</label>
+			<input required value="{{password}}" placeholder="Password" name="password" type="password">
+		</div>
+		<div class='field'>
+			<label for='repeatpassword'>Repeat Password</label>
+			<input required value="{{repeatpassword}}" placeholder="Repeat password" name="repeatpassword" type="password">
+		</div>
+		<div class="botones">
+			<div>
+				<p>O con tu perfil de facebook</p>
+				<button class="ui pink big basic button" type='submit'>I'm in!</button>
+
+				<p>O con tu perfil de facebook</p>
+				<button class="loginBtn loginBtn--facebook">
+					<a href="./facebook"> Register with Facebook </a>
+				</button>
 			</div>
-			<div class='field'>
-				<label for='password'>Password</label>
-				<input required value="{{password}}" placeholder="Password" name="password" type="password">
-			</div>
-			<div class='field'>
-				<label for='repeatpassword'>Repeat Password</label>
-				<input required value="{{repeatpassword}}" placeholder="Repeat password" name="repeatpassword" type="password">
-			</div>
-			<button class="ui pink big basic button" type='submit'>I'm in!</button>
- 		</form>
+		</div>
+	</form>
 </div>
 
 <p style="color:red">
-    {{#if err}}{{err}}{{/if}}
+	{{#if err}}{{err}}{{/if}}
 </p>
-

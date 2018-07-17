@@ -1,9 +1,9 @@
-<h1>Create a new event</h1>
+<h1>Add new event</h1>
 
-<form action="/events" method="POST">
+<form action="/new" method="POST">
     <p>
         Tour Name:
-        <input type="text" name="show">
+        <input type="text" name="name">
     </p>
     <p>
         Where:
@@ -17,11 +17,11 @@
         Longitude:
         <input type="text" name="location[coordinates][0]" id="lng">
     </p>
-    <input type="submit" value="Create it">
+    <input type="submit" value="guardalo ">
 
 </form>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJAsXtHWBQnT38jSoVFTZ3QwqvaCrn4RE&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0iBJ86eZUGkhbuWhS7b4_B3-8cRYQgTQ&libraries=places"></script>
 
 <script>
     let address = document.getElementById('address') 
