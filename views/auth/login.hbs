@@ -1,19 +1,19 @@
 <div class='ui main text container segment'>
-	<div class='ui huge header'>Come in!</div>
+	<div class='ui huge header'>Come in! - Login </div>
   	<form validated class='ui form' action='/login' method='POST'>
 			<div class='field'>
 				<label for='email'>Email</label>
-				<input required placeholder="Email" name="email" type="email">
+				<input {{!-- required --}} placeholder="Email" name="email" type="email">
 			</div>
 			<div class='field'>
 				<label for='password'>Password</label>
-				<input required placeholder="Password" name="password" type="password">
+				<input {{!-- required --}} placeholder="Password" name="password" type="password">
 			</div>
 			<div class="botones">
 				<input name="next" value="{{next}}" type="hidden">
 				<button class="ui black big basic button" type='submit'>Let me in!</button>
 				<button class="loginBtn loginBtn--facebook">
-					<a href="./facebook"> Login with Facebook </a>
+					<a class="face" href="/facebook"> Login with Facebook </a>
 				</button>
 				</div>
  		</form>

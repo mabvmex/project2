@@ -1,30 +1,19 @@
+
 <h1>Create a new event</h1>
 
-<form action="/events" method="POST">
-    <p>
-        Tour Name:
-        <input type="text" name="show">
-    </p>
-    <p>
-        Where:
-        <input type="text" name="location[address]" id="address">
-    </p>
-    <p>
-        Latitude:
-        <input type="text" name="location[coordinates][1]" id="lat">
-    </p>
-    <p>
-        Longitude:
-        <input type="text" name="location[coordinates][0]" id="lng">
-    </p>
+<form action="/events/new-events" method="POST">
+    <p> Where: <input type="text" name="location[address]" id="address"> </p>
+    <p> Tour Name: <input type="text" name="name" id="name"> </p>
+    <p> Latitude: <input type="text" name="location[coordinates][1]" id="lat"> </p>
+    <p> Longitude: <input type="text" name="location[coordinates][0]" id="lng"> </p>
+    
     <input type="submit" value="Create it">
-
 </form>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJAsXtHWBQnT38jSoVFTZ3QwqvaCrn4RE&libraries=places"></script>
-
 <script>
     let address = document.getElementById('address') 
+    let name = document.getElementById('name') 
     let lat = document.getElementById('lat')
     let lng = document.getElementById('lng')
 
@@ -33,11 +22,11 @@
 
         dropdown.addListener('place_changed', ()=>{
             let place = dropdown.getPlace()
-            console.log(place)
             lat.value = place.geometry.location.lat()
             lng.value = place.geometry.location.lng()
+            name.value = place.name;
         })
     }
     autoComplete(address, lat, lng)
-
 </script>
+
