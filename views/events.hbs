@@ -1,0 +1,10 @@
+<h3> Próximos eventos </h3>
+<ul>
+  {{#each this}}
+  <li>
+      <a href="/events/events-details/{{this._id}}"> {{name}} </a>
+  </li>
+    {{/each}}
+</ul>
+
+  <a href="/events/new-events"><button class="ui pink big basic button" type='submit'>Add new event</button></a> 

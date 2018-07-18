@@ -39,7 +39,6 @@ router.post('/signup', (req, res, next) => {
     res.render('auth/signup', req.body);
   }
 
-
   User.register(req.body, req.body.password)
   .then(user=>{
     sendActivationLink(user);
@@ -50,7 +49,6 @@ router.post('/signup', (req, res, next) => {
     res.render('auth/signup', req.body);
   });
 });
-
 
 
 //loginFacebook
@@ -77,7 +75,6 @@ router.post('/logout',  (req, res, next) => {
   req.logout();
   res.redirect('/login');
 });
-
 
 
 module.exports = router;

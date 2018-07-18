@@ -1,32 +1,30 @@
 <div class='ui main text container segment'>
-	<div class='ui huge header'>Join us!</div>
-		<form validated class='ui form' action='/signup' method='POST'>
-			<div class='field'>
-				<label for='username'>Name</label>
-				<input required value="{{username}}" placeholder="Name" name="username" type="text">
-			</div>
-		
-			<div class='field'>
-				<label for='email'>Email</label>
-				<input required value="{{email}}" placeholder="Email" name="email" type="email">
-		``	</div>
+	<div class='ui huge header'>Join us! - SignUp</div>
+	<form validated class='ui form' action='/signup' method='POST'>
+		<div class='field'>
+			<label for='username'>Name</label>
+			<input {{!--required--}} value="{{username}}" placeholder="Name" name="username" type="text">
+		</div> 
+	
+		<div class='field'>
+			<label for='email'>Email</label>
+			<input {{!--required--}} value="{{email}}" placeholder="Email" name="email" type="email">
+		</div>
 		<div class='field'>
 			<label for='password'>Password</label>
-			<input required value="{{password}}" placeholder="Password" name="password" type="password">
+			<input {{!--required--}} value="{{password}}" placeholder="Password" name="password" type="password">
 		</div>
 		<div class='field'>
 			<label for='repeatpassword'>Repeat Password</label>
-			<input required value="{{repeatpassword}}" placeholder="Repeat password" name="repeatpassword" type="password">
+			<input {{!--required--}} value="{{repeatpassword}}" placeholder="Repeat password" name="repeatpassword" type="password">
 		</div>
-		<div class="botones">
-			<div>
-				<p>O con tu perfil de facebook</p>
-				<button class="ui pink big basic button" type='submit'>I'm in!</button>
-
-				<p>O con tu perfil de facebook</p>
+			<div class="botones">
+				<input name="next" value="{{next}}" type="hidden">
+				<button class="ui pink big basic button" type='submit'>Let me in!</button>
 				<button class="loginBtn loginBtn--facebook">
-					<a href="./facebook"> Register with Facebook </a>
+					<a class="face" href="/facebook"> Login with Facebook </a>
 				</button>
+				</div>
 			</div>
 		</div>
 	</form>

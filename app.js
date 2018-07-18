@@ -13,12 +13,20 @@ const session      = require('express-session');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(process.env.DB, {useMongoClient: true})
-  .then(() => {
-    console.log('Connected to Mongo!')
-  }).catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+
+mongoose.connect('mongodb://localhost:27017/project2', (err)=>{
+    if(err) return console.log(err);
+    return console.log("Conectado a la DB");
+});
+
+  // Para conectar con CLoudinary
+  
+  // .connect(process.env.DB, {useMongoClient: true})
+  // .then(() => {
+  //   console.log('Connected to Mongo!')
+  // }).catch(err => {
+  //   console.error('Error connecting to mongo', err)
+  // });
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -28,7 +36,7 @@ const app = express();
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Express View engine setup
