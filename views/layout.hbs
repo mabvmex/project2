@@ -3,28 +3,37 @@
 
   <head>
     <title>{{title}}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,800,900" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
   <body>
-    <div class='ui fixed basic menu'>
+    <div class='ui fixed inverted text menu'>
       <div class='ui container'>
-        <div class='header item'><i class='bullseye icon'></i>isa rojas dj</div>
-          <a href='/' class='item'>Home</a>
-          <a href='/gallery' class='item'>Gallery</a>
-          <a href='/' class='item'>Events</a>
-          <a href='/music' class='item'>Music</a>
+        <div id='brand' class='ui white inverted item'><i class='bullseye icon'></i>isa rojas music</div>
+          <a href='/' class='active item'>HOME</a>
+          <a href='/gallery' class='item'>GALLERY</a>
+          <a href='/' class='item'>EVENTS</a>
+          <a href='/music' class='item'>MUSIC</a>
       </div>
-      <div class="right menu">
+      <div class="right item">
+        <a href='/signup' class="item">Sign Up</a>
+      </div>
+      <div class="right item">
+        <a href='/login' class="item">Login</a>
+      </div>
+      <div class="right item">
         <a href='https://www.facebook.com/isabel.rojas.940098?ref=br_rs' class='item'><i class="facebook f icon"></i></a>
         <a href='https://www.instagram.com/magnolia_isarojas/?hl=en' class='item'><i class="instagram icon"></i></a>
-        <a href='/signup' class="item">Sign Up</a>
-        <a href='/login' class="item">Login</a>
+        <a href='https://www.beatport.com/search?q=mvgnolia' class='item'><i class="headphones icon"></i></a>
+        <a href='https://soundcloud.com/isarojasmusic' class='item'><i class="soundcloud icon"></i></a>
       </div>
     </div>
     
     {{{body}}}
+
 
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
     <script src='/javascripts/script.js'></script>

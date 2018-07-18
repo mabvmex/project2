@@ -3,13 +3,13 @@ const router  = express.Router();
 const Photo = require('../models/Photo');
 const User = require('../models/User');
 const Event = require('../models/Event');
+const Music = require('../models/Music');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-<<<<<<< HEAD
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
   Photo.find({}, (err, photos) => {
@@ -35,11 +35,40 @@ router.post('/gallery/new-photo', (req, res, next) => {
   .catch(e=>next(e))
 });
 
+/*  DELETE Photo */
+router.delete('/gallery/delete/:id', (req, res, next) => {
+  console.log(req.params.id);
+  Photo.findByIdAndRemove(req.params.id)
+  .then(item=>{
+    console.log("borrado papi", item)
+    res.status(200).json(item);
+  })
+  .catch(e=>next(e))
+});
+
 /* GET Music */
 router.get('/music', (req, res, next) => {
-  res.render('music');
+  Music.find({}, (err, musics) => {
+    if(err) {
+      console.log(err); 
+    } else {
+      res.render('music', {musics});
+    }
+  });
 })
-=======
->>>>>>> 7a2cd08220a33c6a5712141a0a269f726d4526ad
+
+/* GET New Music form */
+router.get('/music/new-music', (req, res, next) => {
+  res.render('new-music');
+})
+
+/* GET Create new music */
+router.post('/music/new-music', (req, res, next) => {
+  Music.create(req.body)
+  .then(
+    res.redirect('/music')
+  )
+  .catch(e=>next(e))
+})
 
 module.exports = router;
