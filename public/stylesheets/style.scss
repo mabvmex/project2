@@ -125,3 +125,12 @@ p.copyright {
 .face{
   color:inherit;
 }
+
+#map{
+display: flex;
+position: relative;
+margin-left: 10%;
+margin-right: 10%;
+max-width: 80%;
+height: 70%;
+}

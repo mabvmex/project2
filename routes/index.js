@@ -10,6 +10,10 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5563994d30241389b8d89cdcd2bd49f6e292cb17
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
   Photo.find({}, (err, photos) => {
@@ -37,6 +41,10 @@ router.post('/gallery/new-photo', (req, res, next) => {
   .catch(e=>next(e))
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5563994d30241389b8d89cdcd2bd49f6e292cb17
 /*  DELETE Photo */
 router.delete('/gallery/delete/:id', (req, res, next) => {
   console.log(req.params.id);
@@ -111,16 +119,17 @@ router.post('/events/new-events', (req, res, next) => {
 
 
 /* GET Events-details*/
-router.get('/events/events-details/:_id', (req, res, next) => {
-  Event.findOne(req.params.id,(e,ev)=>{
-    console.log(ev)
-    res.render('events-details/:id',ev);
+router.get('/events/events-details/:id', (req, res, next) => {
+  Event.findById(req.params.id,(e,ev)=>{
+      console.log("ENTRAMOS AL THEN " + ev)
+      res.render('events-details',ev);
+  
   })
+  
   
 });
   router.post('/events/events-details/', (req, res, next) => {
     Event.find({}, (err, detalles)=>{
-    
         res.redirect('/events-details/', detalles)
     })
 });
