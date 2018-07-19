@@ -1,9 +1,13 @@
-<h1>
-    <span style="color:red"> Next city: </font size>
-    </span> &nbsp; {{name}}</h1>
-<p>
-    <span style="color:red">Address:</span> &nbsp; {{location.address}}</p>
-
+<div class="ui raised inverted very padded text container segment">
+    <h1>
+        <span> Next city:</span> 
+        &nbsp; {{name}}
+    </h1>
+    <p>
+        <span>Address:</span> 
+        &nbsp; {{location.address}}
+    </p>
+</div>
 <div id="map"></div> {{!-- Aquí es donde se dibuja el mapa --}}
 
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCJAsXtHWBQnT38jSoVFTZ3QwqvaCrn4RE'></script>

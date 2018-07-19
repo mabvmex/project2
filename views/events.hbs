@@ -1,13 +1,13 @@
-<h3> Próximos eventos </h3>
-<ul>
+<div class="ui raised inverted very padded text container segment">
+  <h1> Next events </h1>
+</div>
+<ul id='events'>
   {{#each events as |event|}}
   <li>
       <a href="/events/events-details/{{event._id}}"> {{event.name}} </a>
   </li>
     {{/each}}
 </ul>
-
-
 {{#if manager}}
   <a href="/events/new-events"><button class="ui pink big basic button" type='submit'>Add new event</button></a> 
 {{/if}}

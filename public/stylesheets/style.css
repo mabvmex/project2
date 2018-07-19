@@ -40,6 +40,10 @@ p.copyright {
   margin-left: 150px;
   margin-right: 40px; }
 
+#events {
+  list-style: none;
+  text-align: center; }
+
 /* Shared */
 .loginBtn {
   box-sizing: border-box;

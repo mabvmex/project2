@@ -22,7 +22,6 @@ function checkRole(role){
   }  
 }
 
-
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -34,7 +33,7 @@ router.get('/gallery', (req, res, next) => {
   Photo.find({}, (err, photos) => {
     if(err) return console.log(err); 
     if (manager) {
-     // req.app.locals.manager = manager;
+      //req.app.locals.manager = manager;
       return res.render('gallery', {photos, manager});
     }
     res.render('gallery', {photos})
@@ -118,25 +117,19 @@ router.post('/events/new-events', (req, res, next) => {
   .catch(e=>next(e))
 });
 
-
 /* GET Events-details*/
 router.get('/events/events-details/:id', (req, res, next) => {
   Event.findById(req.params.id,(e,ev)=>{
       console.log("ENTRAMOS AL THEN " + ev)
       res.render('events-details',ev);
-  
   })
-  
-  
 });
-  router.post('/events/events-details/', (req, res, next) => {
+
+router.post('/events/events-details/', (req, res, next) => {
     Event.find({}, (err, detalles)=>{
         res.redirect('/events-details/', detalles)
     })
 });
-
-
-
 
 
 
