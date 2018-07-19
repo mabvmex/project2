@@ -1,14 +1,23 @@
-
-<h1>Create a new event</h1>
-
-<form action="/events/new-events" method="POST">
-    <p> Where: <input type="text" name="location[address]" id="address"> </p>
-    <p> Tour Name: <input type="text" name="name" id="name"> </p>
-    <p hidden> Latitude: <input type="text" name="location[coordinates][1]" id="lat" hidden> </p>
-    <p hidden> Longitude: <input type="text" name="location[coordinates][0]" id="lng" hidden> </p>
-    
-    <input type="submit" value="Create it">
-</form>
+<div class='ui main text container segment'>
+	<div class='ui huge header'>Create a new event</div>
+		<form validated class='ui form' action="/events/new-events" method="POST">
+			<div class='field'>
+				<label for='address'>Where:</label>
+    		<input required placeholder="Address" type='text' name="location[address]" id="address">
+			</div>
+			<div class='field'>
+				<label for='name'>Tour Name:</label>
+				<input required placeholder="Tour Name" type='text' name="name" id="name">	
+			</div>
+    	<div class='field'>
+				<input hidden required placeholder="Latitude" type="text" name="location[coordinates][1]" id="lat">
+			</div>
+			<div class='field'>
+				<input hidden required placeholder="Longitude" type="text" name="location[coordinates][0]" id="lng">
+			</div>
+  		<button class="ui black big basic button" type='submit'>Create it!</button>
+		</form>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJAsXtHWBQnT38jSoVFTZ3QwqvaCrn4RE&libraries=places"></script>
 <script>

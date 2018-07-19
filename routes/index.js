@@ -10,10 +10,6 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5563994d30241389b8d89cdcd2bd49f6e292cb17
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
   Photo.find({}, (err, photos) => {
@@ -41,10 +37,6 @@ router.post('/gallery/new-photo', (req, res, next) => {
   .catch(e=>next(e))
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5563994d30241389b8d89cdcd2bd49f6e292cb17
 /*  DELETE Photo */
 router.delete('/gallery/delete/:id', (req, res, next) => {
   console.log(req.params.id);

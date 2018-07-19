@@ -28,6 +28,10 @@ router.get('/activation', isLoggedIn, (req, res, next) => {
   .catch(e=>next(e))
 })
 
+router.get('/logout', isLoggedIn, (req, res, next) => {
+  req.logout();
+  res.redirect('/login');
+})
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
