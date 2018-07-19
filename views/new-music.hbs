@@ -1,0 +1,14 @@
+<div class='ui main text container segment'>
+	<div class='ui huge header'>Add new music</div>
+  	<form validated class='ui form' action='/music/new-music' method='POST'>
+			<div class='field'>
+				<label for='title'>Title</label>
+				<input required placeholder="Title" name="title" type="text">
+			</div>
+			<div class='field'>
+				<label for='url'>Url</label>
+				<input required placeholder="URL" name="url" type="text">
+			</div>
+				<button class="ui pink big basic button" type='submit'>Add</button>
+ 		</form>
+</div>

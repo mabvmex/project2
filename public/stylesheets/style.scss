@@ -1,10 +1,52 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 110px;
+  font-family: 'Raleway', sans-serif;
+  background: rgb(20, 13, 14);	
+  color: #FFF;
+}
+
+#about {
+  margin-right: 180px;
+  margin-top: 200px;
+  float: right;
 }
 
 a {
-  color: #00B7FF;
+  color: #FFF;
+}
+
+#brand {
+  font-size: 25px;
+}
+
+.ui.menu.fixed{
+  padding: 30px;
+}
+
+p.copyright {
+  padding: 0;
+  margin-left: 800px;
+  font-size: 10px;
+}
+
+#index-player {
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+.ui.item.row{
+  display: flex;
+  justify-content: center;
+}
+
+.ui.pink.big.basic.button {
+  margin-top:40px;
+  margin-left:560px;
+}
+.ui.link.cards {
+  max-width: 80%;
+  margin-left: 150px;
+  margin-right: 40px;
 }
 
 /* Shared */
@@ -82,4 +124,13 @@ a {
 
 .face{
   color:inherit;
+}
+
+#map{
+display: flex;
+position: relative;
+margin-left: 10%;
+margin-right: 10%;
+max-width: 80%;
+height: 70%;
 }

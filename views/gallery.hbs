@@ -1,15 +1,31 @@
 <div class="ui link cards">
   {{#each photos}}
     <div class="card">
-      <div class="image">
+      <div  class="image">
         <img src="{{url}}">
       </div>
       <div class="content">
         <div class="header">{{title}}</div>
       </div>
-      <a class="ui red small basic button" type='submit'>Delete</a>
-  </div>
-    {{/each}}
-  </div>
+      <div class="extra content">
+        <button class="ui red medium basic button" type='submit' id="delete" data-id="{{_id}}">Delete</button>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<a href="/gallery/new-photo"><button class="ui pink big basic button" type='submit'>Add new photo</button></a>
 
-  <a href="/gallery/new-photo"><button class="ui pink big basic button" type='submit'>Add new photo</button></a> 
+<script>
+  document.getElementById("delete").onclick = function(e){
+    let id = e.target.dataset.id;
+    console.log(id);
+    fetch(`/gallery/delete/${id}`,{
+      method: 'DELETE'
+    })
+    .then(r => r.json())
+    .then(response =>{
+      console.log("borrado mami",response);
+      window.location.reload();
+    })
+  }
+</script>

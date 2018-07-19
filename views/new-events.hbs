@@ -4,8 +4,8 @@
 <form action="/events/new-events" method="POST">
     <p> Where: <input type="text" name="location[address]" id="address"> </p>
     <p> Tour Name: <input type="text" name="name" id="name"> </p>
-    <p> Latitude: <input type="text" name="location[coordinates][1]" id="lat"> </p>
-    <p> Longitude: <input type="text" name="location[coordinates][0]" id="lng"> </p>
+    <p hidden> Latitude: <input type="text" name="location[coordinates][1]" id="lat" hidden> </p>
+    <p hidden> Longitude: <input type="text" name="location[coordinates][0]" id="lng" hidden> </p>
     
     <input type="submit" value="Create it">
 </form>
