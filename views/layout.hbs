@@ -13,12 +13,12 @@
     <div class='ui fixed inverted text menu'>
       <div class='ui container'>
         <div id='brand' class='ui white inverted item'><i class='bullseye icon'></i>isa rojas music</div>
-          
-          <a href='/' class='active item'>HOME</a>
-          <a href='/gallery' class='item'>GALLERY</a>
-          <a href='/events' class='item'>EVENTS</a>
-          <a href='/music' class='item'>MUSIC</a>
-          
+        
+          <a href='/' id='home' class='active item'>HOME</a>
+          <a href='/gallery' id='gallery' class='item'>GALLERY</a>
+          <a href='/events' id='events' class='item'>EVENTS</a>
+          <a href='/music' id='music' class='item'>MUSIC</a>
+
       </div>
       <div class="right item">
         <a href='/signup' class="item">Sign Up</a>
@@ -42,6 +42,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
     <script src='/javascripts/script.js'></script>
+    
+    {{!-- 
+    <script>
+      if(this.isLoggedIn) {
+      var home = document.getElementById('home');
+      home.style.visibility = 'hidden';
+      var gallery = document.getElementById('gallery');
+      gallery.style.visibility = 'hidden';
+      var events = document.getElementById('events');
+      events.style.visibility = 'hidden';
+      var music = document.getElementById('music');
+      music.style.visibility = 'hidden';
+      }
+    </script>
+    --}}
+
   </body>
 
 </html>

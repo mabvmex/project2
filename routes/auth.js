@@ -16,7 +16,7 @@ const errDict = {
 }
 
 function isAuth(req, res, next) {
-  if(req.isAuthenticated()) return res.redirect('/profile');
+  if(req.isAuthenticated()) return res.redirect('/');
   return next();
 }
 
@@ -29,6 +29,23 @@ function isLoggedIn(req, res, next) {
 //   console.log(req.user)
 //   res.render('layout', req.user) 
 //})
+
+//checkRole('role)
+function checkActive(user){ 
+  return (req, res, next) => {
+    if(!req.isAuthenticated()) return res.redirect('/login');
+    if(user.active) return next();
+    return res.redirect('/');
+  }  
+}
+function checkRole(role){ 
+  return (req, res, next) => {
+    if(!req.isAuthenticated()) return res.redirect('/login');
+    if(role === req.user.role) return next();
+    return res.send('no tienes permiso');
+  }  
+}
+
 
 
 //logout
@@ -83,7 +100,7 @@ router.get('/login', isAuth, (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  res.redirect('/profile');
+  res.redirect('/');
 });
 
 //Logout
@@ -92,15 +109,16 @@ router.post('/logout',  (req, res, next) => {
   res.redirect('/login');
 });
 
-
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
+  const manager = req.user.role === 'MANAGER'
   Photo.find({}, (err, photos) => {
-    if(err) {
-      console.log(err); 
-    } else {
-      res.render('gallery', {photos});
+    if(err) return console.log(err); 
+    if (manager) {
+     // req.app.locals.manager = manager;
+      return res.render('gallery', {photos, manager});
     }
+    res.render('gallery', {photos})
   });
 })
 
@@ -129,16 +147,15 @@ router.delete('/gallery/delete/:id', (req, res, next) => {
   .catch(e=>next(e))
 });
 
-
-
 /* GET Music */
 router.get('/music', (req, res, next) => {
+  const manager = req.user.role === 'MANAGER'
   Music.find({}, (err, musics) => {
-    if(err) {
-      console.log(err); 
-    } else {
-      res.render('music', {musics});
-    }
+    if(err) return console.log(err); 
+    if (manager) {
+      return res.render('music', {musics, manager});
+     }
+     return res.render('music', {musics});
   });
 })
 
@@ -156,25 +173,15 @@ router.post('/music/new-music', (req, res, next) => {
   .catch(e=>next(e))
 })
 
-
-
-/* GET Photo Gallery */
-router.get('/gallery', (req, res, next) => {
-  Photo.find({}, (err, photos) => {
-    if(err) { 
-    } else {
-      res.render('gallery', {photos});
-    }
-  });
-})
-
-
-
 /* GET Events */
 router.get('/events', (req, res, next) => {
-  Event.find({}, (err, eventos)=>{
-    res.render('events', eventos);
-   // console.log(" qui van eventos",eventos);
+  const manager = req.user.role === 'MANAGER'
+  Event.find({}, (err, events)=>{
+    if(err) return console.log(err); 
+    if (manager) {
+      return res.render('events', {events, manager});
+    }
+    return res.render('events', {events});
   })
 })
 
@@ -192,18 +199,21 @@ router.post('/events/new-events', (req, res, next) => {
   .catch(e=>next(e))
 });
 
+
 /* GET Events-details*/
 router.get('/events/events-details/:id', (req, res, next) => {
   Event.findById(req.params.id,(e,ev)=>{
       console.log("ENTRAMOS AL THEN " + ev)
       res.render('events-details',ev);
+  
   })
+  
+  
 });
   router.post('/events/events-details/', (req, res, next) => {
     Event.find({}, (err, detalles)=>{
         res.redirect('/events-details/', detalles)
     })
 });
-
 
 module.exports = router;

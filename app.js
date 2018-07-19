@@ -31,6 +31,11 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
+hbs.registerHelper('test', (manager)=>{
+  console.log(manager)
+  return true;
+})
+
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
