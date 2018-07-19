@@ -70,10 +70,8 @@ router.get('/login', isAuth, (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  res.redirect('/profile');
+  res.redirect('/');
 });
-
-
 
 router.post('/logout',  (req, res, next) => {
   req.logout();

@@ -5,6 +5,24 @@ const User = require('../models/User');
 const Event = require('../models/Event');
 const Music = require('../models/Music');
 
+//checkRole('role)
+function checkActive(user){ 
+  return (req, res, next) => {
+    if(!req.isAuthenticated()) return res.redirect('/login');
+    if(user.active) return next();
+    return res.redirect('/');
+  }  
+}
+
+function checkRole(role){ 
+  return (req, res, next) => {
+    if(!req.isAuthenticated()) return res.redirect('/login');
+    if(role === req.user.role) return next();
+    return res.send('no tienes permiso');
+  }  
+}
+
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -12,16 +30,16 @@ router.get('/', (req, res, next) => {
 
 /* GET Photo Gallery */
 router.get('/gallery', (req, res, next) => {
+  const manager = req.user.role === 'MANAGER'
   Photo.find({}, (err, photos) => {
-    if(err) {
-      console.log(err); 
-    } else {
-      res.render('gallery', {photos});
+    if(err) return console.log(err); 
+    if (manager) {
+     // req.app.locals.manager = manager;
+      return res.render('gallery', {photos, manager});
     }
+    res.render('gallery', {photos})
   });
 })
-
-
 
 /* GET New Photo form */
 router.get('/gallery/new-photo', (req, res, next) => {
@@ -50,12 +68,13 @@ router.delete('/gallery/delete/:id', (req, res, next) => {
 
 /* GET Music */
 router.get('/music', (req, res, next) => {
+  const manager = req.user.role === 'MANAGER'
   Music.find({}, (err, musics) => {
-    if(err) {
-      console.log(err); 
-    } else {
-      res.render('music', {musics});
-    }
+    if(err) return console.log(err); 
+    if (manager) {
+      return res.render('music', {musics, manager});
+     }
+     return res.render('music', {musics});
   });
 })
 
@@ -73,25 +92,15 @@ router.post('/music/new-music', (req, res, next) => {
   .catch(e=>next(e))
 })
 
-
-
-/* GET Photo Gallery */
-router.get('/gallery', (req, res, next) => {
-  Photo.find({}, (err, photos) => {
-    if(err) { 
-    } else {
-      res.render('gallery', {photos});
-    }
-  });
-})
-
-
-
 /* GET Events */
 router.get('/events', (req, res, next) => {
-  Event.find({}, (err, eventos)=>{
-    res.render('events', eventos);
-   // console.log(" qui van eventos",eventos);
+  const manager = req.user.role === 'MANAGER'
+  Event.find({}, (err, events)=>{
+    if(err) return console.log(err); 
+    if (manager) {
+      return res.render('events', {events, manager});
+    }
+    return res.render('events', {events});
   })
 })
 

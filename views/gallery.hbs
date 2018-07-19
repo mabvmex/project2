@@ -1,19 +1,41 @@
 <div class="ui link cards">
-  {{#each photos}}
+  {{#if manager}}
+
+  {{#each photos as |photo|}}
     <div class="card">
       <div  class="image">
-        <img src="{{url}}">
+        <img src="{{photo.url}}">
       </div>
       <div class="content">
-        <div class="header">{{title}}</div>
+        <div class="header">{{photo.title}}</div>
       </div>
       <div class="extra content">
-        <button class="ui red medium basic button" type='submit' id="delete" data-id="{{_id}}">Delete</button>
+          <button class="ui red medium basic button" type='submit' id="delete" data-id="{{photo._id}}">Delete</button>
       </div>
     </div>
   {{/each}}
+
+  {{else}}
+
+    {{#each photos as |photo|}}
+     
+    <div class="card">
+      <div  class="image">
+        <img src="{{photo.url}}">
+      </div>
+      <div class="content">
+        <div class="header">{{photo.title}}</div>
+      </div>
+    </div>
+  {{/each}}
+
+  {{/if}}
+
+
 </div>
-<a href="/gallery/new-photo"><button class="ui pink big basic button" type='submit'>Add new photo</button></a>
+{{#if manager}}
+  <a href="/gallery/new-photo"><button class="ui pink big basic button" type='submit'>Add new photo</button></a>
+{{/if}}
 
 <script>
   document.getElementById("delete").onclick = function(e){
