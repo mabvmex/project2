@@ -11,6 +11,11 @@ const Event = require('../models/Event');
 const Music = require('../models/Music');
 
 
+// //multer config
+// const multer = require('multer');
+// const upload = multer({dest: './public/assets'});
+
+
 const errDict = {
   UserExistsError: 'Este usuario ya existe'
 }
@@ -51,7 +56,7 @@ function checkRole(role){
 //logout
 router.get('/logout', isLoggedIn, (req, res, next) => {
   req.logout();
-  res.redirect('/login');
+   res.redirect('/login');
 })
 
 
@@ -80,7 +85,8 @@ router.post('/signup', (req, res, next) => {
 router.get('/activation', isLoggedIn, (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, {active: true}, {new: true})
   .then(user=>{
-    res.send('Activado, gracias ' +  user.username);
+    res.send('Activado, gracias ' +  req.user.username);
+    console.log("ACTIVADO GRACIAS " + req.user.username)
   })
   .catch(e=>next(e))
 })

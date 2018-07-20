@@ -19,6 +19,15 @@
           <a href='/events' id='events' class='item'>EVENTS</a>
           <a href='/music' id='music' class='item'>MUSIC</a>
 
+{{!-- {{#if user = false}} --}}
+            <style>
+              #home     { visibility: hidden; }
+              #gallery  { visibility: hidden; }
+              #events   { visibility: hidden; }
+              #music    { visibility: hidden; }
+            </style>
+{{!-- {{/if}} --}}
+      
       </div>
       <div class="right item">
         <a href='/signup' class="item">Sign Up</a>
@@ -34,6 +43,9 @@
         <a href='https://www.instagram.com/magnolia_isarojas/?hl=en' class='item'><i class="instagram icon"></i></a>
         <a href='https://www.beatport.com/search?q=mvgnolia' class='item'><i class="headphones icon"></i></a>
         <a href='https://soundcloud.com/isarojasmusic' class='item'><i class="soundcloud icon"></i></a>
+
+        <h2>Hola {{user.username}}</h2>
+        <img src="{{user.photoURL}}" alt="">
       </div>
     </div>
     
@@ -42,21 +54,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
     <script src='/javascripts/script.js'></script>
-    
-    {{!-- 
-    <script>
-      if(this.isLoggedIn) {
-      var home = document.getElementById('home');
-      home.style.visibility = 'hidden';
-      var gallery = document.getElementById('gallery');
-      gallery.style.visibility = 'hidden';
-      var events = document.getElementById('events');
-      events.style.visibility = 'hidden';
-      var music = document.getElementById('music');
-      music.style.visibility = 'hidden';
-      }
+      
     </script>
-    --}}
 
   </body>
 
